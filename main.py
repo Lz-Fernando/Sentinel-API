@@ -37,6 +37,10 @@ vectorizer = pickle.load(open(os.path.join(base_dir, 'tfidf_vectorizer.pk1'), 'r
 class Mensagem(BaseModel):
   descricao: str
 
+@app.get("/")
+def read_root():
+    return {"mensagem": "API de verificação de fraude online"}
+
 # Endpoint para verificar se uma mensagem é fraude ou não
 @app.post("/verificar")
 def verificar_mensagem(mensagem: Mensagem):
