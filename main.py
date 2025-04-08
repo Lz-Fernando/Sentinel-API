@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 import pickle
 import string
 import unicodedata
@@ -21,7 +21,7 @@ modelo = pickle.load(open(os.path.join(base_dir, 'modelo.pk1'), 'rb'))
 vectorizer = pickle.load(open(os.path.join(base_dir, 'tfidf_vectorizer.pk1'), 'rb'))
 
 class Mensagem(BaseModel):
-    descricao: str
+    descricao: str = Field(..., example="Texto para análise")
 
 @app.get("/")
 def read_root():
