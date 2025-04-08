@@ -13,12 +13,12 @@ def process_text_conteudo(conteudo: str) -> str:
     nopont = unicodedata.normalize("NFKD", nopont).encode("ASCII", "ignore").decode("ASCII")
     return nopont
 
+def tokenize_text(conteudo):
+  return conteudo.split()
+    
 base_dir = os.path.dirname(__file__)
 modelo = pickle.load(open(os.path.join(base_dir, 'modelo.pk1'), 'rb'))
 vectorizer = pickle.load(open(os.path.join(base_dir, 'tfidf_vectorizer.pk1'), 'rb'))
-
-def tokenize_text(conteudo):
-  return conteudo.split()
 
 class Mensagem(BaseModel):
     descricao: str
