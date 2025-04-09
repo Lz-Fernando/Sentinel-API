@@ -4,6 +4,7 @@ import joblib
 import string
 import unicodedata
 import os
+import uvicorn
 
 app = FastAPI()
 
@@ -33,3 +34,7 @@ def verificar_mensagem(mensagem: Mensagem):
     texto_transformado = vectorizer.transform([texto_processado])
     predicao = modelo.predict(texto_transformado)
     return {"resultado": "FRAUDE" if predicao[0] == 1 else "OK"}
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8080))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
