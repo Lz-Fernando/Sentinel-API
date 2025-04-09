@@ -17,8 +17,8 @@ def tokenize_text(conteudo):
   return conteudo.split()
     
 base_dir = os.path.dirname(__file__)
-modelo = joblib.load(open(os.path.join(base_dir, 'modelo.joblib')))
-vectorizer = joblib.load(open(os.path.join(base_dir, 'tfidf_vectorizer.joblib')))
+modelo = joblib.load(open(os.path.join(base_dir, 'modelo.joblib'), 'rb'))
+vectorizer = joblib.load(open(os.path.join(base_dir, 'tfidf_vectorizer.joblib'), 'rb'))
 
 class Mensagem(BaseModel):
     descricao: str
