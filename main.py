@@ -36,5 +36,5 @@ def verificar_mensagem(mensagem: Mensagem):
     return {"resultado": "FRAUDE" if predicao[0] == 1 else "OK"}
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8080))
+    port = int(os.environ.get("PORT", 8000))
     uvicorn.run("main:app", host="0.0.0.0", port=port)
